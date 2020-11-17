@@ -1,0 +1,19 @@
+PUT http://localhost:3001/api/people/5fb2e468d4c8a60080fb52e9
+Content-Type: application/json
+
+{
+    "name": "Dan Abramov",
+    "number": "12-43-4578951",
+    "id": "5fb2e468d4c8a60080fb52e9"
+}
+
+###
+
+PUT http://localhost:3001/api/people/5fb2e468d4c8a60080fb52e9
+Content-Type: application/json
+
+{
+    "name": "Dan Abramov",
+    "number": "12-43",
+    "id": "5fb2e468d4c8a60080fb52e9"
+}

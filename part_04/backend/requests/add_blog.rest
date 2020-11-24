@@ -1,0 +1,43 @@
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Blog Title 1",
+    "author": "Blog Author 1",
+    "url": "https://blog1url.com",
+    "likes": 123
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Blog Title 2",
+    "author": "Blog Author 2",
+    "url": "https://blog2url.org",
+    "likes": 1234
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+    "title": "Blog Title 3",
+    "author": "Blog Author 3",
+    "url": "https://blog3url.net",
+    "likes": 12
+}
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1pbmh2byIsImlkIjoiNWZiYzFkYTExMjg2ZWIwMTMwODA4YjBmIiwiaWF0IjoxNjA2MTc0ODU1fQ.rWlyoUu-VOZd2SB1mac563w2OUoH5qZd8IJkFJJFftE
+
+{
+    "title": "Blog with token",
+    "author": "author with token",
+    "url": "urlwithtoken.com",
+    "likes": 42
+}

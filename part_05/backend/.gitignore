@@ -1,0 +1,8 @@
+# dependencies
+node_modules
+
+# environment variable
+.env
+
+# eslint configs
+.eslintrc.js

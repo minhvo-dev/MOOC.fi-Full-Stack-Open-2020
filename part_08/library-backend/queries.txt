@@ -1,0 +1,78 @@
+query q81 {
+  bookCount
+  authorCount
+}
+
+query q82 {
+  allBooks {
+    title
+    author
+    published
+    genres
+  }
+}
+
+query q83 {
+  allAuthors {
+    name
+    bookCount
+  }
+}
+
+query q84 {
+  allBooks(author: "Robert Martin") {
+    title
+  }
+}
+
+query q85a {
+  allBooks(genre: "refactoring") {
+    title
+    author
+  }
+}
+
+query q85b {
+  allBooks(author: "Robert Martin", genre: "refactoring") {
+    title
+  }
+}
+
+mutation m86a {
+  addBook(
+    title: "NoSQL Distilled",
+    author: "Martin Fowler",
+    published: 2012,
+    genres: ["database", "nosql"]
+  ) {
+    title,
+    author
+  }
+}
+
+mutation m86b {
+  addBook(
+    title: "Pimeyden tango",
+    author: "Reijo Mäki",
+    published: 1997,
+    genres: ["crime"]
+  ) {
+    title,
+    author
+  }
+}
+
+query q86c {
+  allAuthors {
+    name
+    born
+    bookCount
+  }
+}
+
+mutation m87a {
+  editAuthor(name: "Reijo Mäki", setBornTo: 1958) {
+    name
+    born
+  }
+}

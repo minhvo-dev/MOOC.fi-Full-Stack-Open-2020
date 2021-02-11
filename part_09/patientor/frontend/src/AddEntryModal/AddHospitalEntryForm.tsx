@@ -2,7 +2,7 @@ import React from "react";
 import { HospitalEntry } from "../types";
 import { Field, Form, Formik } from "formik";
 import { Button, Grid, Form as UIForm, Segment } from "semantic-ui-react";
-import { DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
+import { DatePickerField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 import { hospitalEntrySchema } from "../utils/schema";
 
@@ -41,9 +41,8 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         <Form className="form ui">
           <Field
             label="Date"
-            placeholder="YYYY-MM-DD"
             name="date"
-            component={TextField}
+            component={DatePickerField}
           />
           <Field
             label="Specialist"
@@ -68,9 +67,8 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
           <Segment>
             <Field
               label="Date"
-              placeholder="YYYY-MM-DD"
               name="discharge.date"
-              component={TextField}
+              component={DatePickerField}
             />
             <Field
               label="Criteria"

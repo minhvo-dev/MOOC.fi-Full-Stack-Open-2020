@@ -108,14 +108,10 @@ export const patientSchema = yup.object({
     .defined("Name is required"),
   ssn: yup
     .string()
-    .transform((value: string | null | undefined) => {
-      if (!value) return value;
-      return value.trim();
-    })
+    .trim()
     .test("ssn test", "SSN must in ######-#### format", (value: string | null | undefined) => {
       if (!value) return false;
-      value.trim();
-      const arr = value.split("-").map(str => str.replace(/\W/g, ""));
+      const arr = value.split("-").map(str => str.replace(/[^0-9a-zA-Z]/g, ""));
       return arr.length === 2 && arr[0].length === 6 && arr[1].length === 4;
     })
     .defined("Social Security Number is required"),

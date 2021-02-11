@@ -1,7 +1,10 @@
 import React from "react";
-import { ErrorMessage, Field, FieldProps, FormikProps } from "formik";
+import { ErrorMessage, Field, FieldProps, FormikProps, useFormikContext } from "formik";
 import { Dropdown, DropdownProps, Form } from "semantic-ui-react";
 import { Diagnosis, Gender } from "../types";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 // structure of a single option
 export type GenderOption = {
@@ -46,15 +49,12 @@ export const TextField: React.FC<TextProps> = ({
   <Form.Field>
     <label>{label}</label>
     <Field placeholder={placeholder} {...field} />
-    <div style={{ color:'red' }}>
+    <div style={{ color: "red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>
 );
 
-/*
-  for exercises 9.24.-
-*/
 interface NumberProps extends FieldProps {
   label: string;
   errorMessage?: string;
@@ -65,13 +65,35 @@ interface NumberProps extends FieldProps {
 export const NumberField: React.FC<NumberProps> = ({ field, label, min, max }) => (
   <Form.Field>
     <label>{label}</label>
-    <Field {...field} type='number' min={min} max={max} />
+    <Field {...field} type="number" min={min} max={max} />
 
-    <div style={{ color:'red' }}>
+    <div style={{ color: "red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>
 );
+
+interface DatePickerProps extends FieldProps {
+  label: string;
+}
+
+export const DatePickerField: React.FC<DatePickerProps> = ({ field, label }) => {
+  const { setFieldValue } = useFormikContext();
+
+  return (
+    <Form.Field>
+      <label>{label}</label>
+      <DatePicker
+        {...field}
+        // eslint-disable-next-line
+        selected={field.value && new Date(field.value) || null}
+        onChange={val => setFieldValue(field.name, val)} />
+      <div style={{ color: "red" }}>
+        <ErrorMessage name={field.name} />
+      </div>
+    </Form.Field>
+  );
+};
 
 export const DiagnosisSelection = ({
   diagnoses,

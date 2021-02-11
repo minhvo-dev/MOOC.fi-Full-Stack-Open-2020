@@ -1,6 +1,6 @@
 import React from "react";
 import { HealthCheckEntry, HealthCheckRating } from "../types";
-import { DiagnosisSelection, NumberField, TextField } from "../AddPatientModal/FormField";
+import { DatePickerField, DiagnosisSelection, NumberField, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 
 import { Field, Form, Formik } from "formik";
@@ -31,17 +31,15 @@ const AddHealthCheckEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         healthCheckRating: HealthCheckRating.Healthy
       }}
       onSubmit={onSubmit}
-      /* eslint-disable */
+      // eslint-disable-next-line
       validationSchema={healthCheckEntryFormSchema}
-      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
           <Field
             label="Date"
-            placeholder="YYYY-MM-DD"
             name="date"
-            component={TextField}
+            component={DatePickerField}
           />
           <Field
             label="Specialist"

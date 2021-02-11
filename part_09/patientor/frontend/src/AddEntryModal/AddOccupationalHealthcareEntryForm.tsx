@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { Button, Grid, Segment, Form as UIForm } from "semantic-ui-react";
 import { DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
+import { occupationHealthcareEntrySchema } from "../utils/schema";
 
 /**
  * use type OccupationalHealthcareEntry but omit 'id' field
@@ -18,7 +19,7 @@ interface Props {
 
 const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
   const [{ diagnoses }] = useStateValue();
-  
+
   return (
     <Formik
       initialValues={{
@@ -29,26 +30,9 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
         specialist: ""
       }}
       onSubmit={onSubmit}
-      validate={(values) => {
-        const requiredError = "Field is required";
-        const errors: { [field: string]: string } = {};
-        if (!values.date) {
-          errors["date"] = requiredError;
-        }
-        else if (!(Date.parse(values.date))) {
-          errors["date"] = "Date is not formatted correctly";
-        }
-        if (!values.specialist) {
-          errors.specialist = requiredError;
-        }
-        if (!values.description) {
-          errors.description = requiredError;
-        }
-        if (!values.employerName) {
-          errors.employerName = requiredError;
-        }
-        return errors;
-      }}
+      /* eslint-disable */
+      validationSchema={occupationHealthcareEntrySchema}
+      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
@@ -76,13 +60,13 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
             name="description"
             component={TextField}
           />
-           <DiagnosisSelection
+          <DiagnosisSelection
             setFieldValue={setFieldValue}
             setFieldTouched={setFieldTouched}
             diagnoses={Object.values(diagnoses)}
           />
           <UIForm.Field>
-            <label>Sick Leave (*)</label>
+            <label>Sick Leave</label>
           </UIForm.Field>
           <Segment>
             <Field
@@ -98,11 +82,6 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
               component={TextField}
             />
           </Segment>
-          <Grid>
-            <Grid.Column>
-              <label>{"(*): optional fields"}</label>
-            </Grid.Column>
-          </Grid>
           <Grid>
             <Grid.Column floated="left" width={5}>
               <Button type="button" onClick={onCancel} color="red">

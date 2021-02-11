@@ -4,6 +4,7 @@ import { Field, Form, Formik } from "formik";
 import { Button, Grid, Form as UIForm, Segment } from "semantic-ui-react";
 import { DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
+import { hospitalEntrySchema } from "../utils/schema";
 
 /**
  * use type HospitalEntry but omit 'id' field
@@ -32,25 +33,9 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         }
       }}
       onSubmit={onSubmit}
-      validate={(values) => {
-        const requiredError = "Field is required";
-        const errors: { [field: string]: string } = {};
-        if (!values.date) {
-          errors["date"] = requiredError;
-        }
-        else if (!(Date.parse(values.date))) {
-          errors["date"] = "Date is not formatted correctly";
-        }
-        if (!values.specialist) {
-          errors.specialist = requiredError;
-        }
-        if (!values.description) {
-          errors.description = requiredError;
-        }
-        // no idea how to validate two fields of discharge using validate
-        // Todo: use Yup to validate two fields of discharge
-        return errors;
-      }}
+      /* eslint-disable */
+      validationSchema={hospitalEntrySchema}
+      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">

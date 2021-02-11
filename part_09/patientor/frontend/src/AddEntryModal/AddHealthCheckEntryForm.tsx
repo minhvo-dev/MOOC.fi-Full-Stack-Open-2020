@@ -5,6 +5,7 @@ import { useStateValue } from "../state";
 
 import { Field, Form, Formik } from "formik";
 import { Button, Grid } from "semantic-ui-react";
+import { healthCheckEntryFormSchema } from "../utils/schema";
 
 /**
  * use type HealthCheckEntry but omit 'id' field
@@ -19,7 +20,7 @@ interface Props {
 
 const AddHealthCheckEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
   const [{ diagnoses }] = useStateValue();
-  
+
   return (
     <Formik
       initialValues={{
@@ -30,29 +31,9 @@ const AddHealthCheckEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         healthCheckRating: HealthCheckRating.Healthy
       }}
       onSubmit={onSubmit}
-      validate={(values) => {
-        const requiredError = "Field is required";
-        const errors: { [field: string]: string } = {};
-        if (!values.date) {
-          errors.date = requiredError;
-        }
-        else if(!(Date.parse(values.date))) {
-          errors.date = "Date is not formatted correctly";
-        }
-        if (!values.specialist) {
-          errors.specialist = requiredError;
-        }
-        if (!values.description) {
-          errors.description = requiredError;
-        }
-        if (!values.healthCheckRating) {
-          errors.healthCheckRating = requiredError;
-        }
-        else if(!Object.values(HealthCheckRating).includes(values.healthCheckRating)) {
-          errors.healthCheckRating = "Invalid rating";
-        }
-        return errors;
-      }}
+      /* eslint-disable */
+      validationSchema={healthCheckEntryFormSchema}
+      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">

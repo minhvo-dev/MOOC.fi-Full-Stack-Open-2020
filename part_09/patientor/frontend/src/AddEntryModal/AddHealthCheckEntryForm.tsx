@@ -36,17 +36,35 @@ const AddHealthCheckEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
-          <Field
-            label="Date"
-            name="date"
-            component={DatePickerField}
-          />
-          <Field
-            label="Specialist"
-            placeholder="Specialist"
-            name="specialist"
-            component={TextField}
-          />
+          <Grid columns={3} divided style={{ marginBottom: 0 }}>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Field
+                  label="Date"
+                  name="date"
+                  component={DatePickerField}
+                />
+              </Grid.Column>
+              <Grid.Column width={4}>
+                <Field
+                  label="Health Check Rating"
+                  name="healthCheckRating"
+                  component={NumberField}
+                  min={0}
+                  max={3}
+                />
+              </Grid.Column>
+              <Grid.Column width={8}>
+                <Field
+                  label="Specialist"
+                  placeholder="Specialist"
+                  name="specialist"
+                  component={TextField}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+
           <Field
             label="Description"
             placeholder="Entry description"
@@ -58,13 +76,7 @@ const AddHealthCheckEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
             setFieldTouched={setFieldTouched}
             diagnoses={Object.values(diagnoses)}
           />
-          <Field
-            label="Health Check Rating"
-            name="healthCheckRating"
-            component={NumberField}
-            min={0}
-            max={3}
-          />
+
           <Grid>
             <Grid.Column floated="left" width={5}>
               <Button type="button" onClick={onCancel} color="red">

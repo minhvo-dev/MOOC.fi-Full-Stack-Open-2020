@@ -33,23 +33,30 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         }
       }}
       onSubmit={onSubmit}
-      /* eslint-disable */
+      // eslint-disable-next-line
       validationSchema={hospitalEntrySchema}
-      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
-          <Field
-            label="Date"
-            name="date"
-            component={DatePickerField}
-          />
-          <Field
-            label="Specialist"
-            placeholder="Specialist"
-            name="specialist"
-            component={TextField}
-          />
+          <Grid columns={2} divided style={{ marginBottom: 0 }}>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Field
+                  label="Date"
+                  name="date"
+                  component={DatePickerField}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Field
+                  label="Specialist"
+                  placeholder="Specialist"
+                  name="specialist"
+                  component={TextField}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Field
             label="Description"
             placeholder="Entry description"
@@ -65,17 +72,25 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
             <label>Discharge</label>
           </UIForm.Field>
           <Segment>
-            <Field
-              label="Date"
-              name="discharge.date"
-              component={DatePickerField}
-            />
-            <Field
-              label="Criteria"
-              placeholder="Criteria"
-              name="discharge.criteria"
-              component={TextField}
-            />
+            <Grid columns={2} divided>
+              <Grid.Row>
+                <Grid.Column width={4}>
+                  <Field
+                    label="Date"
+                    name="discharge.date"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+                <Grid.Column width={12}>
+                  <Field
+                    label="Criteria"
+                    placeholder="Criteria"
+                    name="discharge.criteria"
+                    component={TextField}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Segment>
           <Grid>
             <Grid.Column floated="left" width={5}>

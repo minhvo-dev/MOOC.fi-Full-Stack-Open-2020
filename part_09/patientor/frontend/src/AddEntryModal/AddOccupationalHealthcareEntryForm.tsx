@@ -30,27 +30,34 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
         specialist: ""
       }}
       onSubmit={onSubmit}
-      /* eslint-disable */
+      // eslint-disable-next-line
       validationSchema={occupationHealthcareEntrySchema}
-      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
+          <Grid columns={2} divided style={{ marginBottom: 0 }}>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Field
+                  label="Date"
+                  name="date"
+                  component={DatePickerField}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Field
+                  label="Specialist"
+                  placeholder="Specialist"
+                  name="specialist"
+                  component={TextField}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Field
             label="Employer Name"
             placeholder="Employer name"
             name="employerName"
-            component={TextField}
-          />
-          <Field
-            label="Date"
-            name="date"
-            component={DatePickerField}
-          />
-          <Field
-            label="Specialist"
-            placeholder="Specialist"
-            name="specialist"
             component={TextField}
           />
           <Field
@@ -68,16 +75,24 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
             <label>Sick Leave</label>
           </UIForm.Field>
           <Segment>
-            <Field
-              label="Start Date"
-              name="sickLeave.startDate"
-              component={DatePickerField}
-            />
-            <Field
-              label="End Date"
-              name="sickLeave.endDate"
-              component={DatePickerField}
-            />
+            <Grid columns={2} divided>
+              <Grid.Row>
+                <Grid.Column>
+                  <Field
+                    label="Start Date"
+                    name="sickLeave.startDate"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Field
+                    label="End Date"
+                    name="sickLeave.endDate"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Segment>
           <Grid>
             <Grid.Column floated="left" width={5}>

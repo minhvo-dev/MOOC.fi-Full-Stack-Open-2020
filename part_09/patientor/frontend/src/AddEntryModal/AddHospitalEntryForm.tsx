@@ -2,7 +2,7 @@ import React from "react";
 import { HospitalEntry } from "../types";
 import { Field, Form, Formik } from "formik";
 import { Button, Grid, Form as UIForm, Segment } from "semantic-ui-react";
-import { DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
+import { DateField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 import { hospitalEntrySchema } from "../utils/schema";
 
@@ -33,9 +33,8 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
         }
       }}
       onSubmit={onSubmit}
-      /* eslint-disable */
+      // eslint-disable-next-line
       validationSchema={hospitalEntrySchema}
-      /* eslint-enable */
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
@@ -43,7 +42,8 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
             label="Date"
             placeholder="YYYY-MM-DD"
             name="date"
-            component={TextField}
+            // eslint-disable-next-line
+            component={DateField}
           />
           <Field
             label="Specialist"
@@ -70,7 +70,8 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
               label="Date"
               placeholder="YYYY-MM-DD"
               name="discharge.date"
-              component={TextField}
+              // eslint-disable-next-line
+              component={DateField}
             />
             <Field
               label="Criteria"

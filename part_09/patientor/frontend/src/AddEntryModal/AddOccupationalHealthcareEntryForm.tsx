@@ -2,7 +2,7 @@ import React from "react";
 import { OccupationalHealthcareEntry } from '../types';
 import { Field, Form, Formik } from "formik";
 import { Button, Grid, Segment, Form as UIForm } from "semantic-ui-react";
-import { DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
+import { DateField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 import { occupationHealthcareEntrySchema } from "../utils/schema";
 
@@ -30,9 +30,8 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
         specialist: ""
       }}
       onSubmit={onSubmit}
-      /* eslint-disable */
-      validationSchema={occupationHealthcareEntrySchema}
-      /* eslint-enable */
+      // eslint-disable-next-line
+      validationSchema={occupationHealthcareEntrySchema}      
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
@@ -46,7 +45,8 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
             label="Date"
             placeholder="YYYY-MM-DD"
             name="date"
-            component={TextField}
+            // eslint-disable-next-line
+            component={DateField}
           />
           <Field
             label="Specialist"
@@ -73,13 +73,15 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
               label="Start Date"
               placeholder="YYYY-MM-DD"
               name="sickLeave.startDate"
-              component={TextField}
+              // eslint-disable-next-line
+              component={DateField}
             />
             <Field
               label="End Date"
               placeholder="YYYY-MM-DD"
               name="sickLeave.endDate"
-              component={TextField}
+              // eslint-disable-next-line
+              component={DateField}
             />
           </Segment>
           <Grid>

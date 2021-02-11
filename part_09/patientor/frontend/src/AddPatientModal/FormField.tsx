@@ -3,6 +3,9 @@ import { ErrorMessage, Field, FieldProps, FormikProps } from "formik";
 import { Dropdown, DropdownProps, Form } from "semantic-ui-react";
 import { Diagnosis, Gender } from "../types";
 
+import SemanticDatepicker from "react-semantic-ui-datepickers";
+import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
+
 // structure of a single option
 export type GenderOption = {
   value: Gender;
@@ -46,15 +49,26 @@ export const TextField: React.FC<TextProps> = ({
   <Form.Field>
     <label>{label}</label>
     <Field placeholder={placeholder} {...field} />
-    <div style={{ color:'red' }}>
+    <div style={{ color: "red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>
 );
 
-/*
-  for exercises 9.24.-
-*/
+export const DateField: React.FC<TextProps> = ({
+  field,
+  label,
+  placeholder
+}) => (
+  <Form.Field>
+    <label>{label}</label>
+    <SemanticDatepicker placeholder={placeholder} {...field} />
+    <div style={{ color: "red" }}>
+      <ErrorMessage name={field.name} />
+    </div>
+  </Form.Field>
+);
+
 interface NumberProps extends FieldProps {
   label: string;
   errorMessage?: string;
@@ -65,9 +79,9 @@ interface NumberProps extends FieldProps {
 export const NumberField: React.FC<NumberProps> = ({ field, label, min, max }) => (
   <Form.Field>
     <label>{label}</label>
-    <Field {...field} type='number' min={min} max={max} />
+    <Field {...field} type="number" min={min} max={max} />
 
-    <div style={{ color:'red' }}>
+    <div style={{ color: "red" }}>
       <ErrorMessage name={field.name} />
     </div>
   </Form.Field>

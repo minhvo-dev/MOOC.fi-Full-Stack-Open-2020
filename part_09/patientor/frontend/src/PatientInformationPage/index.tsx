@@ -56,8 +56,10 @@ const PatientInformationPage: React.FC = () => {
       closeModal();
     }
     catch (error) {
+      /* eslint-disable */
       console.error(error.response.data);
       setError(error.response.data);
+      /* eslint-enable */
     }
   };
 
@@ -71,12 +73,14 @@ const PatientInformationPage: React.FC = () => {
           setPatient(patientInState);
         }
         else {
+          /* eslint-disable */
           const fetchPatientInformation = async () => {
             const { data: patientFromApi } = await axios.get<Patient>(`${apiBaseUrl}/patients/${id}`);
             setPatient(patientFromApi);
             dispatch(updatePatient(patientFromApi));
           };
           fetchPatientInformation();
+          /* eslint-enable */
         }
       }
     }

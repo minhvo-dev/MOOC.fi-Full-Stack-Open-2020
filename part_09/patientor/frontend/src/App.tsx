@@ -13,6 +13,7 @@ import PatientInformationPage from "./PatientInformationPage";
 const App: React.FC = () => {
   const [, dispatch] = useStateValue();
   React.useEffect(() => {
+    /* eslint-disable */
     axios.get<void>(`${apiBaseUrl}/ping`);
 
     // fetch patient list
@@ -40,7 +41,7 @@ const App: React.FC = () => {
       }
     };
     fetchDiagnosisList();
-
+    /* eslint-enable */
   }, [dispatch]);
 
   return (

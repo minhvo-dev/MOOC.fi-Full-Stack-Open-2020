@@ -33,8 +33,10 @@ const PatientListPage: React.FC = () => {
       closeModal();
     } 
     catch (e) {
+      /* eslint-disable */
       console.error(e.response.data);
       setError(e.response.data);
+      /* eslint-enable */
     }
   };
 

@@ -6,7 +6,7 @@ import { Grid } from "semantic-ui-react";
 const Entries: React.FC<{ entries: Entry[] }> = ({ entries }) => {
   return (
     <div>
-      <h3>Entries</h3>
+      <h2>Entries</h2>
       <Grid>
         {entries.map(entry =>
           <Grid.Column width={5} key={entry.id}>

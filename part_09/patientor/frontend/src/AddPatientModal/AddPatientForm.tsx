@@ -2,8 +2,9 @@ import React from "react";
 import { Grid, Button } from "semantic-ui-react";
 import { Field, Formik, Form } from "formik";
 
-import { TextField, SelectField, GenderOption } from "./FormField";
+import { TextField, SelectField, GenderOption, DatePickerField } from "./FormField";
 import { Gender, Patient } from "../types";
+import { patientSchema } from "../utils/schema";
 
 /*
  * use type Patient, but omit id and entries,
@@ -33,23 +34,7 @@ export const AddPatientForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
         gender: Gender.Other
       }}
       onSubmit={onSubmit}
-      validate={values => {
-        const requiredError = "Field is required";
-        const errors: { [field: string]: string } = {};
-        if (!values.name) {
-          errors.name = requiredError;
-        }
-        if (!values.ssn) {
-          errors.ssn = requiredError;
-        }
-        if (!values.dateOfBirth) {
-          errors.dateOfBirth = requiredError;
-        }
-        if (!values.occupation) {
-          errors.occupation = requiredError;
-        }
-        return errors;
-      }}
+      validationSchema={patientSchema}
     >
       {({ isValid, dirty }) => {
         return (
@@ -67,10 +52,9 @@ export const AddPatientForm: React.FC<Props> = ({ onSubmit, onCancel }) => {
               component={TextField}
             />
             <Field
-              label="Date Of Birth"
-              placeholder="YYYY-MM-DD"
+              label="Date of Birth"
               name="dateOfBirth"
-              component={TextField}
+              component={DatePickerField}
             />
             <Field
               label="Occupation"

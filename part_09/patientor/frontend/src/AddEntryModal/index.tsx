@@ -33,7 +33,7 @@ const AddEntryModal = ({ modalOpen, onClose, onSubmit, error, entryFormOptions, 
 
   return (
     <Modal open={modalOpen} onClose={onClose} centered={false} closeIcon>
-      <Modal.Header>Add a new entry</Modal.Header>
+      <Modal.Header style={{ color: "white", backgroundColor: "blue"}}>Add a new entry</Modal.Header>
       <Modal.Content>
         {error && <Segment inverted color="red">{`Error: ${error}`}</Segment>}
         <Form.Field>

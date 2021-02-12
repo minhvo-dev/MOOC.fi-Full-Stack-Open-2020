@@ -2,7 +2,7 @@ import React from "react";
 import { HospitalEntry } from "../types";
 import { Field, Form, Formik } from "formik";
 import { Button, Grid, Form as UIForm, Segment } from "semantic-ui-react";
-import { DateField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
+import { DatePickerField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 import { hospitalEntrySchema } from "../utils/schema";
 
@@ -38,19 +38,25 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
-          <Field
-            label="Date"
-            placeholder="YYYY-MM-DD"
-            name="date"
-            // eslint-disable-next-line
-            component={DateField}
-          />
-          <Field
-            label="Specialist"
-            placeholder="Specialist"
-            name="specialist"
-            component={TextField}
-          />
+          <Grid columns={2} divided style={{ marginBottom: 0 }}>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Field
+                  label="Date"
+                  name="date"
+                  component={DatePickerField}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Field
+                  label="Specialist"
+                  placeholder="Specialist"
+                  name="specialist"
+                  component={TextField}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Field
             label="Description"
             placeholder="Entry description"
@@ -66,6 +72,7 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
             <label>Discharge</label>
           </UIForm.Field>
           <Segment>
+<<<<<<< HEAD
             <Field
               label="Date"
               placeholder="YYYY-MM-DD"
@@ -79,6 +86,27 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
               name="discharge.criteria"
               component={TextField}
             />
+=======
+            <Grid columns={2} divided>
+              <Grid.Row>
+                <Grid.Column width={4}>
+                  <Field
+                    label="Date"
+                    name="discharge.date"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+                <Grid.Column width={12}>
+                  <Field
+                    label="Criteria"
+                    placeholder="Criteria"
+                    name="discharge.criteria"
+                    component={TextField}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+>>>>>>> test
           </Segment>
           <Grid>
             <Grid.Column floated="left" width={5}>

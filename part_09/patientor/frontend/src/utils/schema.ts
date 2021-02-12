@@ -17,6 +17,7 @@ const getMaxDate = (): Date => {
 export const healthCheckEntryFormSchema = yup.object({
   date: yup
     .date()
+    .typeError("Please select a date")
     .min(getMinDate(), "Invalid date")
     .max(getMaxDate(), "Invalid date")
     .defined("Date is required"),
@@ -38,6 +39,7 @@ export const healthCheckEntryFormSchema = yup.object({
 export const hospitalEntrySchema = yup.object({
   date: yup
     .date()
+    .typeError("Please select a date")
     .min(getMinDate(), "Invalid date")
     .max(getMaxDate(), "Invalid date")
     .defined("Date is required"),
@@ -54,6 +56,7 @@ export const hospitalEntrySchema = yup.object({
     .object({
       date: yup
         .date()
+        .typeError("Please select a date")
         .min(getMinDate(), "Invalid date")
         .max(getMaxDate(), "Invalid date")
         .defined("Date is required"),
@@ -87,11 +90,40 @@ export const occupationHealthcareEntrySchema = yup.object({
     .object({
       startDate: yup
         .date()
+        .typeError("Please select a date")
         .min(getMinDate(), "Invalid date")
         .max(getMaxDate(), "Invalid date"),
       endDate: yup
         .date()
+        .typeError("Please select a date")
         .min(getMinDate(), "Invalid date")
         .max(getMaxDate(), "Invalid date")
     })
+});
+
+export const patientSchema = yup.object({
+  name: yup
+    .string()
+    .min(2, "Name is too short")
+    .defined("Name is required"),
+  ssn: yup
+    .string()
+    .trim()
+    .test("ssn test", "SSN must be in ######-#### format", (value: string | null | undefined) => {
+      if (!value) return false;
+      const arr = value.split("-").map(str => str.replace(/[^0-9a-zA-Z]/g, ""));
+      return arr.length === 2 && arr[0].length === 6 && arr[1].length === 4;
+    })
+    .defined("Social Security Number is required"),
+  dateOfBirth: yup
+    .date()
+    .typeError("Please select a date")
+    .min(getMinDate(), "Invalid date")
+    .max(getMaxDate(), "Invalid date")
+    .defined("Date of birth is required"),
+  occupation: yup
+    .string()
+    .min(2, "Occupation is too short")
+    .max(50, "Occupation is too long")
+    .defined("Occupation is required")
 });

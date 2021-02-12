@@ -1,10 +1,10 @@
 import React from "react";
-import { ErrorMessage, Field, FieldProps, FormikProps } from "formik";
+import { ErrorMessage, Field, FieldProps, FormikProps, useFormikContext } from "formik";
 import { Dropdown, DropdownProps, Form } from "semantic-ui-react";
 import { Diagnosis, Gender } from "../types";
+import DatePicker from "react-datepicker";
 
-import SemanticDatepicker from "react-semantic-ui-datepickers";
-import "react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css";
+import "react-datepicker/dist/react-datepicker.css";
 
 // structure of a single option
 export type GenderOption = {
@@ -55,20 +55,6 @@ export const TextField: React.FC<TextProps> = ({
   </Form.Field>
 );
 
-export const DateField: React.FC<TextProps> = ({
-  field,
-  label,
-  placeholder
-}) => (
-  <Form.Field>
-    <label>{label}</label>
-    <SemanticDatepicker placeholder={placeholder} {...field} />
-    <div style={{ color: "red" }}>
-      <ErrorMessage name={field.name} />
-    </div>
-  </Form.Field>
-);
-
 interface NumberProps extends FieldProps {
   label: string;
   errorMessage?: string;
@@ -86,6 +72,29 @@ export const NumberField: React.FC<NumberProps> = ({ field, label, min, max }) =
     </div>
   </Form.Field>
 );
+
+interface DatePickerProps extends FieldProps {
+  label: string;
+}
+
+export const DatePickerField: React.FC<DatePickerProps> = ({ field, label }) => {
+  const { setFieldValue } = useFormikContext();
+
+  return (
+    <Form.Field>
+      <label>{label}</label>
+      <DatePicker
+        dateFormat="yyyy-MM-dd"
+        {...field}
+        // eslint-disable-next-line
+        selected={field.value && new Date(field.value) || null}
+        onChange={val => setFieldValue(field.name, val)} />
+      <div style={{ color: "red" }}>
+        <ErrorMessage name={field.name} />
+      </div>
+    </Form.Field>
+  );
+};
 
 export const DiagnosisSelection = ({
   diagnoses,

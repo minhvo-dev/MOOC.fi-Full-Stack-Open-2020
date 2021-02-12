@@ -2,7 +2,7 @@ import React from "react";
 import { OccupationalHealthcareEntry } from '../types';
 import { Field, Form, Formik } from "formik";
 import { Button, Grid, Segment, Form as UIForm } from "semantic-ui-react";
-import { DateField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
+import { DatePickerField, DiagnosisSelection, TextField } from "../AddPatientModal/FormField";
 import { useStateValue } from "../state";
 import { occupationHealthcareEntrySchema } from "../utils/schema";
 
@@ -31,27 +31,33 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
       }}
       onSubmit={onSubmit}
       // eslint-disable-next-line
-      validationSchema={occupationHealthcareEntrySchema}      
+      validationSchema={occupationHealthcareEntrySchema}
     >
       {({ isValid, dirty, setFieldValue, setFieldTouched }) => (
         <Form className="form ui">
+          <Grid columns={2} divided style={{ marginBottom: 0 }}>
+            <Grid.Row>
+              <Grid.Column width={4}>
+                <Field
+                  label="Date"
+                  name="date"
+                  component={DatePickerField}
+                />
+              </Grid.Column>
+              <Grid.Column width={12}>
+                <Field
+                  label="Specialist"
+                  placeholder="Specialist"
+                  name="specialist"
+                  component={TextField}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
           <Field
             label="Employer Name"
             placeholder="Employer name"
             name="employerName"
-            component={TextField}
-          />
-          <Field
-            label="Date"
-            placeholder="YYYY-MM-DD"
-            name="date"
-            // eslint-disable-next-line
-            component={DateField}
-          />
-          <Field
-            label="Specialist"
-            placeholder="Specialist"
-            name="specialist"
             component={TextField}
           />
           <Field
@@ -69,20 +75,24 @@ const AddOccupationalHealthcareEntryForm: React.FC<Props> = ({ onCancel, onSubmi
             <label>Sick Leave</label>
           </UIForm.Field>
           <Segment>
-            <Field
-              label="Start Date"
-              placeholder="YYYY-MM-DD"
-              name="sickLeave.startDate"
-              // eslint-disable-next-line
-              component={DateField}
-            />
-            <Field
-              label="End Date"
-              placeholder="YYYY-MM-DD"
-              name="sickLeave.endDate"
-              // eslint-disable-next-line
-              component={DateField}
-            />
+            <Grid columns={2} divided>
+              <Grid.Row>
+                <Grid.Column>
+                  <Field
+                    label="Start Date"
+                    name="sickLeave.startDate"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+                <Grid.Column>
+                  <Field
+                    label="End Date"
+                    name="sickLeave.endDate"
+                    component={DatePickerField}
+                  />
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
           </Segment>
           <Grid>
             <Grid.Column floated="left" width={5}>

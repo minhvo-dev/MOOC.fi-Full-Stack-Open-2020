@@ -84,6 +84,7 @@ export const DatePickerField: React.FC<DatePickerProps> = ({ field, label }) => 
     <Form.Field>
       <label>{label}</label>
       <DatePicker
+        dateFormat="yyyy-MM-dd"
         {...field}
         // eslint-disable-next-line
         selected={field.value && new Date(field.value) || null}

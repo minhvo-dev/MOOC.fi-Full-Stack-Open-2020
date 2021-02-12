@@ -6,7 +6,6 @@ import { PatientFormValues } from "../AddPatientModal/AddPatientForm";
 import AddPatientModal from "../AddPatientModal";
 import { Patient } from "../types";
 import { apiBaseUrl } from "../constants";
-import HealthRatingBar from "../components/HealthRatingBar";
 import { useStateValue, addPatient } from "../state";
 import { Link } from "react-router-dom";
 
@@ -31,7 +30,7 @@ const PatientListPage: React.FC = () => {
       );
       dispatch(addPatient(newPatient));
       closeModal();
-    } 
+    }
     catch (e) {
       /* eslint-disable */
       console.error(e.response.data);
@@ -43,7 +42,7 @@ const PatientListPage: React.FC = () => {
   return (
     <div className="App">
       <Container textAlign="center">
-        <h3>Patient list</h3>
+        <h2>Patient list</h2>
       </Container>
       <Table celled>
         <Table.Header>
@@ -51,7 +50,7 @@ const PatientListPage: React.FC = () => {
             <Table.HeaderCell>Name</Table.HeaderCell>
             <Table.HeaderCell>Gender</Table.HeaderCell>
             <Table.HeaderCell>Occupation</Table.HeaderCell>
-            <Table.HeaderCell>Health Rating</Table.HeaderCell>
+            <Table.HeaderCell># of Entries</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
@@ -60,9 +59,7 @@ const PatientListPage: React.FC = () => {
               <Table.Cell><Link to={`/patients/${patient.id}`}>{patient.name}</Link></Table.Cell>
               <Table.Cell>{patient.gender}</Table.Cell>
               <Table.Cell>{patient.occupation}</Table.Cell>
-              <Table.Cell>
-                <HealthRatingBar showText={false} rating={1} />
-              </Table.Cell>
+              <Table.Cell>{patient.entries ? patient.entries.length : 0}</Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -73,7 +70,12 @@ const PatientListPage: React.FC = () => {
         error={error}
         onClose={closeModal}
       />
-      <Button onClick={() => openModal()}>Add New Patient</Button>
+      <Button
+        onClick={() => openModal()}
+        color="green"
+      >
+        Add New Patient
+      </Button>
     </div>
   );
 };

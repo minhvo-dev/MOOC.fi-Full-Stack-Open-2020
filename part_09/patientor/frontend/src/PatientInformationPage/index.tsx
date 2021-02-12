@@ -1,13 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { Button, Container, Grid, Image } from "semantic-ui-react";
 import { useStateValue, updatePatient } from "../state";
 import { Patient } from "../types";
 import { apiBaseUrl } from "../constants";
 import GenderIcon from "./GenderIcon";
 import Entries from "./Entries";
-import { Button, Container, Grid, Image } from "semantic-ui-react";
 import AddEntryModal, { EntryFormValues } from "../AddEntryModal";
+import { getISODateString } from "../utils/helper";
 
 const PatientInformationPage: React.FC = () => {
   const [{ patients }, dispatch] = useStateValue();
@@ -107,7 +108,7 @@ const PatientInformationPage: React.FC = () => {
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={6} textAlign="right"><em>Date of birth</em></Grid.Column>
-                <Grid.Column width={10}>{patient.dateOfBirth ? patient.dateOfBirth : "N/A"}</Grid.Column>
+                <Grid.Column width={10}>{getISODateString(patient.dateOfBirth)}</Grid.Column>
               </Grid.Row>
               <Grid.Row>
                 <Grid.Column width={6} textAlign="right"><em>Gender</em></Grid.Column>

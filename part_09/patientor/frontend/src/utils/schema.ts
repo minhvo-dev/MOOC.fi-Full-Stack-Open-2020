@@ -109,7 +109,7 @@ export const patientSchema = yup.object({
   ssn: yup
     .string()
     .trim()
-    .test("ssn test", "SSN must in ######-#### format", (value: string | null | undefined) => {
+    .test("ssn test", "SSN must be in ######-#### format", (value: string | null | undefined) => {
       if (!value) return false;
       const arr = value.split("-").map(str => str.replace(/[^0-9a-zA-Z]/g, ""));
       return arr.length === 2 && arr[0].length === 6 && arr[1].length === 4;

@@ -72,21 +72,6 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
             <label>Discharge</label>
           </UIForm.Field>
           <Segment>
-<<<<<<< HEAD
-            <Field
-              label="Date"
-              placeholder="YYYY-MM-DD"
-              name="discharge.date"
-              // eslint-disable-next-line
-              component={DateField}
-            />
-            <Field
-              label="Criteria"
-              placeholder="Criteria"
-              name="discharge.criteria"
-              component={TextField}
-            />
-=======
             <Grid columns={2} divided>
               <Grid.Row>
                 <Grid.Column width={4}>
@@ -106,7 +91,6 @@ const AddHospitalEntryForm: React.FC<Props> = ({ onCancel, onSubmit }) => {
                 </Grid.Column>
               </Grid.Row>
             </Grid>
->>>>>>> test
           </Segment>
           <Grid>
             <Grid.Column floated="left" width={5}>

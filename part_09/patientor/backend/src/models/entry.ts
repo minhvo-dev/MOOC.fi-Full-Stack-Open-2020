@@ -23,7 +23,7 @@ const entrySchema = new mongoose.Schema({
     required: true,
     minLength: 5
   },
-  diagnosisCode: [{
+  diagnosisCodes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "Diagnosis"
   }],
@@ -33,10 +33,10 @@ const entrySchema = new mongoose.Schema({
     ref: "Patient"
   },
   // health check entry
-  healthCheckingRating: {
+  healthCheckRating: {
     type: Number,
     min: 0,
-    max: 4
+    max: 3
   },
   // hospital entry
   discharge: {

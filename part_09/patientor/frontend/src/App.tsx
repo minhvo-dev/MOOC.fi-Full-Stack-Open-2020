@@ -14,8 +14,6 @@ const App: React.FC = () => {
   const [, dispatch] = useStateValue();
   React.useEffect(() => {
     /* eslint-disable */
-    axios.get<void>(`${apiBaseUrl}/ping`);
-
     // fetch patient list
     const fetchPatientList = async () => {
       try {

@@ -3,21 +3,21 @@ import { Diagnosis } from "../types";
 import { List } from "semantic-ui-react";
 import { useStateValue } from "../state";
 
-const DiagnosisCodeList: React.FC<{ codes: Array<Diagnosis["code"]> }> = ({ codes }) => {
+const DiagnosisCodeList: React.FC<{ codeIDs: Array<Diagnosis["id"]> }> = ({ codeIDs }) => {
   const [{ diagnoses },] = useStateValue();
 
-  if (codes.length === 0) {
+  if (codeIDs.length === 0) {
     return null;
   }
 
   return (
     <List>
-      {codes.map(code =>
-        <List.Item key={code}>
+      {codeIDs.map(id =>
+        <List.Item key={id}>
           <List.Icon name="bug" />
           <List.Content>
-            <List.Header>{code}</List.Header>
-            <List.Description>{diagnoses[code].name}</List.Description>
+            <List.Header>{diagnoses[id].code}</List.Header>
+            <List.Description>{diagnoses[id].name}</List.Description>
           </List.Content>
         </List.Item>
       )}

@@ -19,7 +19,7 @@ const HospitalEntryDetail: React.FC<{ entry: HospitalEntry }> = ({ entry }) => {
       </Card.Content>
       {entry.diagnosisCodes &&
         <Card.Content>
-          <DiagnosisCodeList codes={entry.diagnosisCodes} />
+          <DiagnosisCodeList codeIDs={entry.diagnosisCodes} />
         </Card.Content>
       }
     </Card>

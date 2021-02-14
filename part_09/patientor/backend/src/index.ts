@@ -28,12 +28,6 @@ mongoose
 app.use(cors()); // accept requests from all origins
 app.use(express.json()); // parse requests to jsons
 
-// GET: ping endpoint
-app.get("/api/ping", (_req, res) => {
-  console.log("ping");
-  res.send("pong");
-});
-
 // diagnosis route
 app.use("/api/diagnosis", diagnosisRouter);
 
@@ -59,9 +53,7 @@ app.use((
     return response.status(400).end();
   }
   if (error.name === "ValidationError") {
-    return response.status(400).send({
-      message: error.message
-    });
+    return response.status(400).send(error.message);
   }
   next(error);
 });

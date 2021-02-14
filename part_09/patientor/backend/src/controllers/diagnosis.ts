@@ -11,9 +11,9 @@ router.get("/", async (_request, response, next) => {
   try {
     const diagnosis = await Diagnosis.find({});
     response.json(diagnosis);
-  } 
+  }
   catch (error) {
-    next(error)  ;
+    next(error);
   }
 });
 

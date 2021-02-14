@@ -13,8 +13,7 @@ router.get("/", async (_request, response, next) => {
       name: 1,
       dateOfBirth: 1,
       gender: 1,
-      occupation: 1,
-      ssn: 1
+      occupation: 1
     });
     response.json(patients);
   }
@@ -64,10 +63,12 @@ router.post("/:id/entries", async (request, response, next) => {
     else {
       const entry = new Entry({ ...body });
       entry.user = id;
-      const savedEntry = await entry.save();
+      const savedEntry = await entry.save({ validateBeforeSave: true });
 
       patient.entries = patient.entries.concat(savedEntry._id);
-      const savedPatient = await patient.save();
+      await patient.save({ validateBeforeSave: true });
+
+      const savedPatient = await Patient.findById(id).populate("entries");
 
       response.json(savedPatient);
     }

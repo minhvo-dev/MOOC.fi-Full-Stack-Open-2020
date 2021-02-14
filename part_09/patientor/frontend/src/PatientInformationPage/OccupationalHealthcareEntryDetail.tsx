@@ -27,7 +27,7 @@ const OccupationalHealthcareEntryDetail: React.FC<{ entry: OccupationalHealthcar
       }
       {entry.diagnosisCodes &&
         <Card.Content>
-          <DiagnosisCodeList codes={entry.diagnosisCodes} />
+          <DiagnosisCodeList codeIDs={entry.diagnosisCodes} />
         </Card.Content>
       }
     </Card>

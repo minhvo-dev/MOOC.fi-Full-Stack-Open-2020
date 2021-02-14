@@ -1,8 +1,6 @@
 # node packages
 node_modules
 
-# build directory
-build
 
 # environment variables
 .env

@@ -3,8 +3,6 @@ import cors from "cors";
 import mongoose from "mongoose";
 
 import config from "./configs";
-// import diagnosisRouter from "./routes/diagnosis";
-// import patientRouter from "./routes/patients";
 import diagnosisRouter from "./controllers/diagnosis";
 import patientRouter from "./controllers/patients";
 

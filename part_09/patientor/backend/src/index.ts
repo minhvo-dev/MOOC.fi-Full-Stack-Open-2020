@@ -26,6 +26,8 @@ mongoose
 app.use(cors()); // accept requests from all origins
 app.use(express.json()); // parse requests to jsons
 
+app.use(express.static("build"));
+
 // diagnosis route
 app.use("/api/diagnosis", diagnosisRouter);
 

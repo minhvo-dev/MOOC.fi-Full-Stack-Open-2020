@@ -4,11 +4,14 @@
   "description": "Backend for Patientor project",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "tsc": "tsc",
     "dev": "cross-env NODE_ENV=development ts-node-dev ./src/index.ts",
     "start": "node build/src/index.js",
     "lint": "eslint --ext .ts .",
-    "postinstall": "npm run build"
+    "build:ui": "rm -rf build && cd ../frontend/ && npm run build --prod && cp -r build ../backend/",
+    "build:full": "npm run build:ui && npm run tsc -p",
+    "deploy": "git add . && git commit -m uibuild && git push heroku master",
+    "deploy:full": "npm run build:full && npm run deploy"
   },
   "author": "Tue-Minh Dinh Vo",
   "license": "MIT",
@@ -22,7 +25,6 @@
     "@typescript-eslint/eslint-plugin": "^4.15.0",
     "@typescript-eslint/parser": "^4.15.0",
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0",
     "eslint": "^7.19.0",
     "ts-node-dev": "^1.1.1",
     "typescript": "^4.1.4"
@@ -32,6 +34,6 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.15",
     "mongoose-unique-validator": "^2.0.3",
-    "uuid": "^8.3.2"
+    "dotenv": "^8.2.0"
   }
 }

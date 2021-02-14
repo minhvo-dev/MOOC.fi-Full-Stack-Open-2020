@@ -1,3 +1,5 @@
+import { Document } from "mongoose";
+
 export interface Diagnosis {
   code: string;
   name: string;
@@ -70,3 +72,44 @@ export type NewHospitalEntry = Omit<HospitalEntry, "id">;
 export type NewOccupationalHealthcareEntry = Omit<OccupationalHealthcareEntry, "id">;
 
 export type NewEntry = NewHealthCheckEntry | NewHospitalEntry | NewOccupationalHealthcareEntry;
+
+
+// ------------------------------
+// Mongo document types
+// ------------------------------
+export interface DiagnosisDocument extends Document {
+  id: string,
+  code: string,
+  name: string,
+  latin?: string
+}
+
+export interface EntryDocument extends Document {
+  id: string;
+  type: string;
+  description: string;
+  date: string;
+  specialist: string;
+  user: string;
+  diagnosisCodes?: Array<Diagnosis["code"]>;
+  healthCheckRating?: HealthCheckRating;
+  discharge?: {
+    date: string;
+    criteria: string;
+  };
+  employerName?: string;
+  sickLeave?: {
+    startDate: string;
+    endDate: string;
+  };
+}
+
+export interface PatientDocument extends Document {
+  id: string;
+  name: string;
+  dateOfBirth: string;
+  ssn: string;
+  gender: Gender;
+  occupation: string;
+  entries: Array<EntryDocument>;
+}

@@ -43,7 +43,7 @@ const PatientListPage: React.FC = () => {
   return (
     <div className="App">
       <Container textAlign="center">
-        <h2>Patient list</h2>
+        <h2>Patient List</h2>
       </Container>
       <Table celled>
         <Table.Header>

@@ -10,7 +10,9 @@ https://nameless-brook-69308.herokuapp.com/
 - [Acknowledgement](#Acknowledgement)
 
 ## Overview
-- [**Patientor**][app-link] is a simple web application for doctors to record health information of their patients.
+- [**Patientor**][app-link] is a simple web application for doctors to record health information of their patients. The features include:    
+  - **Add** new patient into the Patient List.   
+  - **Add** new health issue into a patient record.  
 - [**Patientor**][app-link] is the final product of [Part 9 - Fullstack Open 2020 course][part-9-link] with slight modification to be able to deploy to [Heroku][heroku-homepage]. The original version can be found [here][original-version-link].
 
 ## Installation
@@ -42,10 +44,14 @@ https://nameless-brook-69308.herokuapp.com/
   - Backend is built with [Node.js][nodejs-homepage] and [Express.js][expressjs-homepage].
   - Database is built with [MongoDB][mongodb-homepage] and [moongoose][mongoose-homepage].
   - Hosting service is [Heroku][heroku-homepage].
+- [**Patientor**][app-link] utilizes RESTful APIs design to connect frontend and backend:  
+  - GET: to retrieve information of all patients as well as a specific patient.
+  - POST: to add a new patient as well a new entry into the database.
+- Data validation is implemented in both backend and frontend.
 
 ## Acknowledgement
-- Frontend was developed based on this [existing project][original-front-end-github].     
-- Backend was developed based on the instruction of [the course][part-9-link] with slight modification.
+- Frontend was developed based on [this existing project][original-front-end-github].     
+- Backend was developed based on [this detailed instruction][part-9-link] with slight modification.
 
 
 [app-link]: https://nameless-brook-69308.herokuapp.com/

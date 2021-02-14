@@ -3,6 +3,7 @@ _The solutions may or may not be correct_
 
 ## Table of Contents
 - [Overview](#Overview)
+- [Showcase](#Showcase)
 - [Notes](#Notes)
 - [Acknowledgement](#Acknowledgement)
 - [Certificate](#Certificate)
@@ -12,6 +13,11 @@ This repository contains **my solutions** to the first topic of the [Full Stack 
  
 
 My solution to the second topic of this course, [React Native][part-10-course-link], can be found [here][react-native-solution-github].
+
+## Showcase
+- [**Patientor**][patientor-app] 
+  - Demo: https://nameless-brook-69308.herokuapp.com/  
+  - Code: https://github.com/minhvo-dev/MOOC.fi-Full-Stack-Open-2020/tree/dev/part_09/patientor
 
 ## Notes
 _Some key concepts of each part_
@@ -199,4 +205,6 @@ _Introducing TypeScript_
 [interface-vs-type-doc]: https://www.typescriptlang.org/docs/handbook/advanced-types.html#interfaces-vs-type-aliases
 
 [helsinki-uni-link]: https://www.helsinki.fi/fi "The University of Helsinki website"
-[matti-github-link]: https://github.com/mluukkai 
+[matti-github-link]: https://github.com/mluukkai   
+
+[patientor-app]: https://nameless-brook-69308.herokuapp.com/

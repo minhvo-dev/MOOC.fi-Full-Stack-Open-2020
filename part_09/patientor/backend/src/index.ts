@@ -1,6 +1,7 @@
 import express, { NextFunction } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
 
 import config from "./configs";
 import diagnosisRouter from "./controllers/diagnosis";
@@ -34,12 +35,17 @@ app.use("/api/diagnosis", diagnosisRouter);
 // patient route
 app.use("/api/patients", patientRouter);
 
+app.use("/*", (_req, res) => {
+  // needed for refresh
+  res.sendFile(path.join(__dirname, "../", "index.html"));
+});
+
 // unknown endpoint
 app.use((_request, response) => {
   response.status(404).send({
     message: "unknown endpoint"
   });
-})
+});
 
 // error handler
 app.use((

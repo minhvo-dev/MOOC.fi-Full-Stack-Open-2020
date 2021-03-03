@@ -16,7 +16,7 @@ My solution to the second topic of this course, [React Native][part-10-course-li
 
 ## Showcase
 - [**Patientor**][patientor-app] 
-  - Demo: https://gentle-island-42314.herokuapp.com/  
+  - Demo: https://patientor-ts.herokuapp.com  
   - Code: https://github.com/minhvo-dev/MOOC.fi-Full-Stack-Open-2020/tree/dev/part_09/patientor
 
 ## Notes
@@ -207,4 +207,4 @@ _Introducing TypeScript_
 [helsinki-uni-link]: https://www.helsinki.fi/fi "The University of Helsinki website"
 [matti-github-link]: https://github.com/mluukkai   
 
-[patientor-app]: https://gentle-island-42314.herokuapp.com/
+[patientor-app]: https://patientor-ts.herokuapp.com

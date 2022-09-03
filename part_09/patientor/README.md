@@ -1,7 +1,6 @@
 # PATIENTOR APPLICATION
 
 _TypeScript makes things more complicated and easier at the same time._   
-https://patientor-ts.herokuapp.com/
 
 ## Table of Content
 - [Overview](#Overview)
@@ -54,7 +53,7 @@ https://patientor-ts.herokuapp.com/
 - Backend was developed based on [this detailed instruction][part-9-link] with slight modification.
 
 
-[app-link]: https://patientor-ts.herokuapp.com/
+[app-link]: https://github.com/minhvo-dev/MOOC.fi-Full-Stack-Open-2020/tree/dev/part_09/patientor
 [part-9-link]: https://fullstackopen.com/en/part9   
 [original-version-link]: https://github.com/minhvo-dev/MOOC.fi-Full-Stack-Open-2020/tree/882ce1bdefa3ad3a912ab0ee7f92148de1728ff1/part_09/patientor   
 [original-front-end-github]: https://github.com/fullstack-hy2020/patientor

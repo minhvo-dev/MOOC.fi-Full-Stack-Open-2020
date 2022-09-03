@@ -15,8 +15,7 @@ This repository contains **my solutions** to the first topic of the [Full Stack 
 My solution to the second topic of this course, [React Native][part-10-course-link], can be found [here][react-native-solution-github].
 
 ## Showcase
-- [**Patientor**][patientor-app] 
-  - Demo: https://patientor-ts.herokuapp.com  
+- **Patientor**
   - Code: https://github.com/minhvo-dev/MOOC.fi-Full-Stack-Open-2020/tree/dev/part_09/patientor
 
 ## Notes
@@ -206,5 +205,3 @@ _Introducing TypeScript_
 
 [helsinki-uni-link]: https://www.helsinki.fi/fi "The University of Helsinki website"
 [matti-github-link]: https://github.com/mluukkai   
-
-[patientor-app]: https://patientor-ts.herokuapp.com
